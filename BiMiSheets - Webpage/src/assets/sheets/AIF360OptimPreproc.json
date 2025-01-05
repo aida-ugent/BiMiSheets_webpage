@@ -1,0 +1,47 @@
+{
+    "filename": "AIF360OptimPreproc",
+    "metadata":
+    {
+        "name": "Optimized Preprocessing ",
+        "authors": "AIF360",
+        "version": "0.6.1",
+        "license": "Apache 2.0",
+        "source_paper": "\\textit{Optimized Pre-Processing for Discrimination Prevention} \\cite{Calmon_2017}"
+    },
+    "description":
+    {
+        "method_type": "Transformation",
+        "task": ["Binary Classification"],
+        "compatible_data": ["Tabular Datasets"],
+        "method_description":"Optimized Preprocessing is a preprocessing technique that learns a probabilistic transformation that edits the features and labels in the data with group fairness, individual distortion, and data fidelity constraints and objectives."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Pre-processing",
+        "compatible_model": ["Model Independent"],
+        "model_description": "The original paper conducted experiments with Logistic Regression and Random Forest. \\cite{Calmon_2017}"
+    },
+    "fairness":
+    {
+        "composition_features": ["Categorical Attributes"],
+        "fairness_guarantee": "Fairness Guarantee on Dataset",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity"],
+        "fairness_description": "The method ensures that the fraction between positive rates is smaller than a hyperparameter epsilon, while keeping the distortion on the features under a given threshold."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "Python",
+                      "related_packages": ["scikit-learn"] }],
+        "description": "The implementation does not use the initialized privileged and unprivileged groups in the initialization but the info on demographic attributes in the pre-processing of the dataset. The Optimizer dict contains the tunable parameters of the function."
+    },
+    "use_cases": 
+    {
+        "cases": ["Adult \\cite{adult_2}", "German \\cite{german_credit_data}", "COMPAS \\cite{Larson_Angwin_Kirchner}"],
+        "description": ""
+    },
+    "bibliography": [" @inproceedings{Calmon_2017, title={Optimized Pre-Processing for Discrimination Prevention}, volume={30}, url={https://papers.nips.cc/paper_files/paper/2017/hash/9a49a25d845a483fae4be7e341368e36-Abstract.html}, booktitle={Advances in Neural Information Processing Systems}, publisher={Curran Associates, Inc.}, author={Calmon, Flavio and Wei, Dennis and Vinzamuri, Bhanukiran and Natesan Ramamurthy, Karthikeyan and Varshney, Kush R}, year={2017} }",
+    "@misc{adult_2, author = {Becker, Barry and Kohavi, Ronny}, title = {{Adult}}, year = {1996}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5XW20}}",
+    "@misc{Larson_Angwin_Kirchner, title={How We Analyzed the COMPAS Recidivism Algorithm}, url={https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm}, journal={ProPublica}, author={Larson, Jeff and Angwin, Julia and Kirchner, Lauren}, language={en} }",
+    "@misc{german_credit_data, author = {Hofmann, Hans}, title = {{Statlog (German Credit Data)}}, year = {1994}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5NC77}}"]
+}

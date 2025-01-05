@@ -1,0 +1,47 @@
+{
+    "filename": "AIF360Reweighing",
+    "metadata":
+    {
+        "name": "Reweighing",
+        "authors": "AIF360",
+        "version": "0.6.1",
+        "license": "Apache 2.0",
+        "source_paper": "\\textit{Data Preprocessing Techniques for Classification without Discrimination} \\cite{Kamiran_Calders_2012}"
+    },
+    "description":
+    {
+        "method_type": "Reweighing",
+        "task": ["Binary Classification"],
+        "compatible_data": ["Tabular Datasets"],
+        "method_description": "The tuples in the training dataset are assigned weights. By carefully choosing the weights, the training dataset can be made discrimination-free w.r.t. S without having to change any of the labels. The weights on the tuples can be used directly in any method based on frequency counts."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Pre-processing",
+        "compatible_model": ["Model with incorporates weigths"],
+        "model_description": "The method is effectively model independent, however for the method to be useful then the model must be able to incorporate the weights produced by the method."
+    },
+    "fairness":
+    {
+        "composition_features": ["Binary Attribute"],
+        "fairness_guarantee": "No Fairness Guarantee",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity"],
+        "fairness_description": "The reweighing factor is the fraction of the expected frequency to the observed frequency wrt the combination of sensitive attribute and its class."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "Python",
+                      "related_packages": ["scikit-learn"] }],
+        "description": "Input data has to be formatted as an AIF360 dataset."
+    },
+    "use_cases": 
+    {
+        "cases": ["Adult \\cite{adult_2}, German \\cite{Larson_Angwin_Kirchner}, COMPAS \\cite{german_credit_data}"],
+        "description": ""
+    },
+    "bibliography": [" @article{Kamiran_Calders_2012, title={Data preprocessing techniques for classification without discrimination}, volume={33}, ISSN={0219-3116}, DOI={10.1007/s10115-011-0463-8}, number={1}, journal={Knowledge and Information Systems}, author={Kamiran, Faisal and Calders, Toon}, year={2012}, month=oct, pages={1–33}, language={en} }",
+    "@misc{adult_2, author = {Becker, Barry and Kohavi, Ronny}, title = {{Adult}}, year = {1996}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5XW20}}",
+    "@misc{Larson_Angwin_Kirchner, title={How We Analyzed the COMPAS Recidivism Algorithm}, url={https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm}, journal={ProPublica}, author={Larson, Jeff and Angwin, Julia and Kirchner, Lauren}, language={en} }",
+    "@misc{german_credit_data, author = {Hofmann, Hans}, title = {{Statlog (German Credit Data)}}, year = {1994}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5NC77}}"]
+}

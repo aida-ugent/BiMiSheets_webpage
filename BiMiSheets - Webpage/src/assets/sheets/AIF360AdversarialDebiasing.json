@@ -1,0 +1,46 @@
+{
+    "filename": "AIF360AdversarialDebiasing",
+    "metadata":
+    {
+        "name": "Adversarial Debiasing",
+        "authors": "AIF360",
+        "version": "0.6.1",
+        "license": "Apache 2.0",
+        "source_paper": "\\textit{Mitigating Unwanted Biases with Adversarial Learning} \\cite{Zhang2018}"
+    },
+    "description":
+    {
+        "method_type": ["Adversarial Learning", "Regularization"],
+        "task": ["Binary Classification"],
+        "compatible_data": ["Tabular Dataset"],
+        "method_description":"Adversarial debiasing is an in-processing technique that learns a classifier to maximize prediction accuracy and simultaneously reduce an adversary’s ability to determine the protected attribute from the predictions. This approach leads to a fair classifier as the predictions cannot carry any group discrimination information that the adversary can exploit."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "In-Processing",
+        "compatible_model": ["Neural Networks"],
+        "model_description": "The method is compatible with any gradient-based learning model, however the current implementation only allows for a neural network with one hidden layer."
+    },
+    "fairness":
+    {
+        "composition_features": ["Binary Attributes"],
+        "fairness_guarantee": "Tunable Fairness Strength",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity"],
+        "fairness_description": "The adversarial model tries to predict the sensitive attributes from the prediction of the model. The method tries to prevent this from happening, effectively making the prediction independent of the sensitive attribute, which is equivalent to Demographic Parity."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "Python",
+                      "related_packages": [] }],
+        "description": "The model runs a Tensorflow neural network with one hidden layer. Input data has to be formatted as an AIF360 dataset."
+    },
+    "use_cases": 
+    {
+        "cases": ["Adult \\cite{adult_2}"],
+        "description": "Additional experiments were done in \\citet{Zhang2018} on the Google analogy data set \\cite{Mikolov_Sutskever_Chen_Corrado_Dean_2013}."
+    },
+    "bibliography": ["@inproceedings{Zhang2018, author = {Zhang, Brian Hu and Lemoine, Blake and Mitchell, Margaret}, title = {Mitigating Unwanted Biases with Adversarial Learning}, year = {2018}, isbn = {9781450360128}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/3278721.3278779}, doi = {10.1145/3278721.3278779}, booktitle = {Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society}, pages = {335–340}, numpages = {6}, keywords = {unbiasing, multi-task learning, debiasing, adversarial learning}, location = {New Orleans, LA, USA}, series = {AIES '18}}",
+                     "@misc{adult_2, author = {Becker, Barry and Kohavi, Ronny}, title = {{Adult}}, year = {1996}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5XW20}}",
+                     " @inproceedings{Mikolov_Sutskever_Chen_Corrado_Dean_2013, title={Distributed Representations of Words and Phrases and their Compositionality}, volume={26}, url={https://papers.nips.cc/paper_files/paper/2013/hash/9aa42b31882ec039965f3c4923ce901b-Abstract.html}, booktitle={Advances in Neural Information Processing Systems}, publisher={Curran Associates, Inc.}, author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff}, year={2013} }"]
+}

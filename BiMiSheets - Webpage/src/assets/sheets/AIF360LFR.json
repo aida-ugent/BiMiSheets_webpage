@@ -1,0 +1,47 @@
+{
+    "filename": "AIF360LFR",
+    "metadata":
+    {
+        "name": "LFR",
+        "authors": "AIF360",
+        "version": "0.6.1",
+        "license": "Apache 2.0",
+        "source_paper": "\\textit{Learning Fair Representations} \\cite{Zemel13}"
+    },
+    "description":
+    {
+        "method_type": "Adversarial Learning",
+        "task": ["Binary Classification"],
+        "compatible_data": ["Tabular Datasets"],
+        "method_description":"LFR maps each individual, represented as a data point in a given input space, to a probability distribution in a new representation space. The aim of this new representation is to lose any information that can identify whether the person belongs to the protected subgroup, while retaining as much other information as possible."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Pre-Processing",
+        "compatible_model": ["Model Independent"],
+        "model_description": ""
+    },
+    "fairness":
+    {
+        "composition_features": ["Binary Attributes"],
+        "fairness_guarantee": "Tunable Fairness Strength",
+        "fairness_type": ["Group Fairness", "Individual Fairness"],
+        "fairness_definitions": ["Demographic Parity"],
+        "fairness_description": "The method minimizes an objection which is a combination of demographic parity, information loss in the representation, and accuracy loss of the prediction label. The strength for each of these elements can be tuned."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "Python",
+                      "related_packages": [""] }],
+        "description": "Input data has to be formatted as an AIF360 dataset."
+    },
+    "use_cases": 
+    {
+        "cases": ["Adult \\cite{adult_2}"],
+        "description": "Experiments were conducted on Adult \\cite{adult_2}, German credit \\cite{german_credit_data}, and Heritage Health Prize milestone 1 challenge \\cite{Brierley_Vogel_Axelrod} in \\citet{Zemel13}."
+    },
+    "bibliography": ["@InProceedings{Zemel13, title = {Learning Fair Representations}, author = {Zemel, Rich and Wu, Yu and Swersky, Kevin and Pitassi, Toni and Dwork, Cynthia}, booktitle = {Proceedings of the 30th International Conference on Machine Learning}, pages = {325--333}, year = {2013}, editor = {Dasgupta, Sanjoy and McAllester, David}, volume = {28}, number = {3},series = {Proceedings of Machine Learning Research},address = {Atlanta, Georgia, USA},month = {17--19 Jun},publisher = {PMLR},pdf = {http://proceedings.mlr.press/v28/zemel13.pdf},url = {https://proceedings.mlr.press/v28/zemel13.html}}",
+                     "@misc{adult_2, author = {Becker, Barry and Kohavi, Ronny}, title = {{Adult}}, year = {1996}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5XW20}}",
+                     "@misc{german_credit_data, author = {Hofmann, Hans}, title = {{Statlog (German Credit Data)}}, year = {1994}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5NC77}}",
+                     " @article{Brierley_Vogel_Axelrod, title={Heritage Provider Network Health Prize Round 1 Milestone Prize How We Did It – Team ‘Market Makers’}, author={Brierley, Phil and Vogel, David and Axelrod, Randy}, language={en} }"]
+}

@@ -1,0 +1,47 @@
+{
+    "filename": "AIF360CalibratedEqOddsPostprocessing",
+    "metadata":
+    {
+        "name": "Calibrated Equalized Odds Post-processing",
+        "authors": "AIF360",
+        "version": "0.6.1",
+        "license": "Apache 2.0",
+        "source_paper": "\\textit{On fairness and calibration} \\cite{pleiss2017fairness}"
+    },
+    "description":
+    {
+        "method_type": "Calibration",
+        "task": ["Binary Prediction"],
+        "compatible_data": ["Dataset Independent"],
+        "method_description":"Equalized Odds Post-Processing is a post-processing technique that seeks to attain scores that optimize (a relaxation of) equalized odds while the classifier remains calibrated. This is achieved by changing the probabilities of certain samples to the base rate of the group rather than the classifier's prediction."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Post-processing",
+        "compatible_model": ["Calibrated Classifier"],
+        "model_description": "Calibrated Equalized Odds Post-processing is compatible with any underlying learner that outputs a calibrated classifier with regards to the sensitive groups. "
+    },
+    "fairness":
+    {
+        "composition_features": ["Binary Attribute"],
+        "fairness_guarantee": "No Guaranteed Fairness Level",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Equal Opportunity", "Predictive Equality", "Calibration"],
+        "fairness_description": "The method aims to satisfy either the chosen fairness measure, while maintaining calibration between satisfiers. This is achieved by sacrificing performance for one group. Experimental results show no guarantee on the performance of the method."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "python",
+                      "related_packages": ["scikit-learn"] }],
+        "description": "While the concept of the method is compatible with any calibrated classifier, this implementation uses a set model type. The dataset must be passed in the AIF360 used format."
+    },
+    "use_cases": 
+    {
+        "cases": ["Adult \\cite{adult_2}", "German \\cite{german_credit_data}", "Compas \\cite{Larson_Angwin_Kirchner}"],
+        "description": "The method does not seem to improve the fairness of a model when experimented on Adult. "
+    },
+    "bibliography": ["@article{pleiss2017fairness, title={On fairness and calibration}, author={Pleiss, Geoff and Raghavan, Manish and Wu, Felix and Kleinberg, Jon and Weinberger, Kilian Q}, journal={Advances in neural information processing systems}, volume={30}, year={2017}}",
+                     "@misc{adult_2, author = {Becker, Barry and Kohavi, Ronny}, title = {{Adult}}, year = {1996}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5XW20}}",
+                     "@misc{Larson_Angwin_Kirchner, title={How We Analyzed the COMPAS Recidivism Algorithm}, url={https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm}, journal={ProPublica}, author={Larson, Jeff and Angwin, Julia and Kirchner, Lauren}, language={en} }",
+                     "@misc{german_credit_data, author = {Hofmann, Hans}, title = {{Statlog (German Credit Data)}}, year = {1994}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5NC77}}"]
+}

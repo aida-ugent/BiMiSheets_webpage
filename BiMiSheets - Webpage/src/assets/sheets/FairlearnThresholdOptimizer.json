@@ -1,0 +1,46 @@
+{
+    "filename": "FairlearnThresholdOptimizer",
+    "metadata":
+    {
+        "name": "Threshold Optimizer",
+        "authors": "Fairlearn",
+        "version": "0.11.0",
+        "license": "MIT",
+        "source_paper": "\\textit{Equality of Opportunity in Supervised Learning} \\cite{Hardt2016}"
+    },
+    "description":
+    {
+        "method_type": "Thresholding",
+        "task": ["Binary prediction", "Hard labels"],
+        "compatible_data": ["Dataset Independent"],
+        "method_description":"For each sensitive feature value, ThresholdOptimizer creates separate thresholds and applies them to the predictions of the user-provided estimator. To decide on the thresholds it generates all possible thresholds and selects the best combination in terms of the objective and the fairness constraints."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Post-processing",
+        "compatible_model": ["Probabilistic Classifier"],
+        "model_description": "ThresholdOptimizer expects an estimator that provides it with scores. While the output of ThresholdOptimizer is binary, the input is not limited to scores derived from binary classifiers. In fact, real valued input, e.g. from a regressor, provides it with many more options to create thresholds."
+    },
+    "fairness":
+    {
+        "composition_features": ["Categorical Attributes"],
+        "fairness_guarantee": "Guaranteed Fairness Level",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity"],
+        "fairness_description": "ThresholdOptimizer is built to satisfy the specified fairness criteria exactly and with no remaining disparity. In many cases this comes at the expense of performance, for example, with significantly lower accuracy. Regardless, it provides an interesting data point for comparison with other models."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "python",
+                      "related_packages": ["scikit-learn"] }],
+        "description": "By default, ThresholdOptimizer trains the passed estimator using its fit() method. If prefit is set to True, ThresholdOptimizer does not call fit() on the estimator and assumes that it is already trained."
+    },
+    "use_cases": 
+    {
+        "cases": ["Diabetes 130-Hospitals \\cite{diabetes_130, Strack2014}"],
+        "description": ""
+    },
+    "bibliography": [" @inproceedings{Hardt2016, title={Equality of Opportunity in Supervised Learning}, volume={29}, url={https://proceedings.neurips.cc/paper/2016/hash/9d2682367c3935defcb1f9e247a97c0d-Abstract.html}, booktitle={Advances in Neural Information Processing Systems}, publisher={Curran Associates, Inc.}, author={Hardt, Moritz and Price, Eric and Price, Eric and Srebro, Nati}, year={2016}}",
+    " @article{Strack2014, title={Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records}, volume={2014}, rights={Copyright © 2014 Beata Strack et al.}, ISSN={2314-6141}, DOI={10.1155/2014/781670}, number={1}, journal={BioMed Research International}, author={Strack, Beata and DeShazo, Jonathan P. and Gennings, Chris and Olmo, Juan L. and Ventura, Sebastian and Cios, Krzysztof J. and Clore, John N.}, year={2014}, pages={781670}, language={en} }",
+    "@misc{diabetes_130, author = {Clore, John, Cios, Krzysztof, DeShazo, Jon, and Strack, Beata}, title = {{Diabetes 130-US Hospitals for Years 1999-2008}}, year = {2014}, howpublished = {UCI Machine Learning Repository}, note = {{DOI}: https://doi.org/10.24432/C5230J}}"]
+}

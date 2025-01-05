@@ -1,0 +1,44 @@
+{
+    "filename": "ErrorParity",
+    "metadata":
+    {
+        "name": "Error-parity",
+        "authors": "André Cruz and Moritz Hardt",
+        "version": "0.3.11",
+        "license": "MIT License",
+        "source_paper": "\\textit{Unprocessing Seven Years of Algorithmic Fairness}. \\cite{cruz2024unprocessing}"
+    },
+    "description":
+    {
+        "method_type": "Thresholding",
+        "task": ["Binary Prediction", "Hard Labels"],
+        "compatible_data": ["Dataset Independent"],
+        "method_description":"Error-parity sets groupspecific acceptance thresholds so as to \\textbf{minimize risk while achieving an equality in error rates} across a desired set of groups. It is both simple and computationally efficient. Error-parity achieves exact error rate equality, unlike many preprocessing and inprocessing, which achieve some relaxation of the constraint. The method uses the output scores and returns hard prediction labels. "
+    },
+    "pipeline":
+    {
+        "pipeline_location": "Post-processing",
+        "compatible_model": ["Probabilistic Classifier"],
+        "model_description": "Error-parity is compatible with any underlying learner that can produce scores of predicted probabilities. "
+    },
+    "fairness":
+    {
+        "composition_features": ["Categorical Attributes"],
+        "fairness_guarantee": "Guaranteed Fairness Level",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality"],
+        "fairness_description": ""
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "python 3.8-3.12",
+                      "related_packages": ["scikit-learn", "fairlearn"] }],
+        "description": "The implementation requires a trained score predictor that takes in samples, X, in shape (num\\_samples, num\\_features), and outputs real-valued scores, R, in shape (num\\_samples,) as the model that feeds into error-parity. "
+    },
+    "use_cases": 
+    {
+        "cases": ["Synthetic", "Adult", "Folktables"],
+        "description": ""
+    },
+    "bibliography": ["@inproceedings{cruz2024unprocessing, title={Unprocessing Seven Years of Algorithmic Fairness}, author={Andr{\\'e} Cruz and Moritz Hardt}, booktitle={The Twelfth International Conference on Learning Representations}, year={2024}, url={https://openreview.net/forum?id=jr03SfWsBS}}"]
+}

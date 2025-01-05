@@ -1,0 +1,48 @@
+{
+    "filename": "FairlearnReductions",
+    "metadata":
+    {
+        "name": "Reductions",
+        "authors": "Fairlearn",
+        "version": "0.11.0",
+        "license": "MIT",
+        "source_paper": "\\textit{A reductions approach to fair classification}. \\cite{agarwal18a} and \\\\ \\textit{Fair regression: quantitative definitions and reduction-based algorithms.} \\cite{agarwal19d}"
+    },
+    "description":
+    {
+        "method_type": "Constraint Optimization",
+        "task": ["Binary Classification", "Regression"],
+        "compatible_data": ["Tabular Data"],
+        "method_description":"A learning reduction takes as input complex examples, transforms them into simpler examples, invokes an appropriate learning algorithm on the simpler examples, then transforms predictions on these simpler examples to a prediction on the complex examples \\cite{Beygelzimer2016}.  A fairness constraint is used to transform a binary classification or regression problem to a cost-sensitive problem."
+    },
+    "pipeline":
+    {
+        "pipeline_location": "In-Processing",
+        "compatible_model": ["Probabilistic Classifier"],
+        "model_description": "Reductions is compatible with any underlying learner that can produce scores of predicted probabilities."
+    },
+    "fairness":
+    {
+        "composition_features": ["Categorical Attributes"],
+        "fairness_guarantee": "Guaranteed Fairness Level",
+        "fairness_type": ["Group Fairness"],
+        "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality", "Overall Accuracy Equality", "Bounded Group Loss"],
+        "fairness_description": "A difference bound is passed to the system which details the allowed fairness violation. The difference between two groups will be at most twice the value of this difference bound hyperparameter."
+    },
+    "implementation":
+    {
+        "packages": [{"programming_language": "python",
+                       "related_packages": ["scikit-learn", "Tensorflow Keras"] }],
+        "description": "The reduction algorithms in Fairlearn only require a wrapper access to any 'base' learning algorithm, meaning that the 'base' algorithm only needs to implement fit and predict methods, as any standard scikit-learn estimator, but it does not need to have any knowledge of the desired fairness constraints or sensitive features."
+    },
+    "use_cases": 
+    {
+        "cases": ["Credit Card Clients \\cite{default_of_credit_card_clients_350}"],
+        "description": ""
+    },
+    "bibliography": ["@ARTICLE{Beygelzimer2016, author={Beygelzimer, Alina and Daumé, Hal and Langford, John and Mineiro, Paul}, journal={Proceedings of the IEEE}, title={Learning Reductions That Really Work}, year={2016},volume={104}, number={1}, pages={136-147}, keywords={Prediction algorithms;Big data;Classification algorithms;Error analysis;Computational modeling;Algorithm design and analysis;Learning systems;Learning systems;machine learning;prediction methods;Learning systems;machine learning;prediction methods}, doi={10.1109/JPROC.2015.2494118}}",
+                    "@InProceedings{agarwal18a, title = {A Reductions Approach to Fair Classification}, author = {Agarwal, Alekh and Beygelzimer, Alina and Dudik, Miroslav and Langford, John and Wallach, Hanna}, booktitle = {Proceedings of the 35th International Conference on Machine Learning}, pages = {60--69}, year = {2018}, editor = {Dy, Jennifer and Krause, Andreas}, volume = {80}, series = {Proceedings of Machine Learning Research}, month = {10--15 Jul}, publisher = {PMLR}, pdf = {http://proceedings.mlr.press/v80/agarwal18a/agarwal18a.pdf}, url = {https://proceedings.mlr.press/v80/agarwal18a.html}}",
+                    "@InProceedings{agarwal19d, title = {Fair Regression: Quantitative Definitions and Reduction-Based Algorithms}, author = {Agarwal, Alekh and Dudik, Miroslav and Wu, Zhiwei Steven}, booktitle = {Proceedings of the 36th International Conference on Machine Learning}, pages = {120--129}, year = {2019}, editor = {Chaudhuri, Kamalika and Salakhutdinov, Ruslan}, volume = {97}, series = {Proceedings of Machine Learning Research}, month = {09--15 Jun}, publisher = {PMLR}, pdf = {http://proceedings.mlr.press/v97/agarwal19d/agarwal19d.pdf}, url = {https://proceedings.mlr.press/v97/agarwal19d.html}}",
+                    "@misc{default_of_credit_card_clients_350, author = {Yeh, I-Cheng}, title = {{Default of Credit Card Clients}},year  = {2009}, howpublished = {UCI Machine Learning Repository}, note  = {{DOI}: https://doi.org/10.24432/C55S3H} }"
+]
+}
