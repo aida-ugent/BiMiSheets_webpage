@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Adversarial Learning",
+        "method_type": ["Adversarial Learning"],
         "task": ["Classification", "Regression"],
         "compatible_data": ["Tabular Data"],
         "method_description":"The predictor network is constructed to solve the underlying supervised learning task, without considering fairness, by minimizing the predictor loss. However, to improve fairness, we do not only minimize the predictor loss, but we also want to decrease the adversary’s ability to predict the sensitive features from the predictor’s predictions (when implementing demographic parity), or jointly from the predictor’s predictions and true labels (when implementing equalized odds)."

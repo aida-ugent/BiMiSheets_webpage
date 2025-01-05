@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Thresholding",
+        "method_type": ["Thresholding"],
         "task": ["Binary Prediction", "Hard Labels"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Reject option classification is a postprocessing technique that gives favorable outcomes to unpriviliged groups and unfavorable outcomes to priviliged groups in a confidence band around the decision boundary with the highest uncertainty. This is done by flipping the labels for the samples of these groups close to the decision boundary."

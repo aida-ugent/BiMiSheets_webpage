@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Thresholding",
+        "method_type": ["Thresholding"],
         "task": ["Classification", "Hard Labels", "Inferring Sensitive Attributes"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"OxonFair is a postprocessing approach for enforcing fairness, with support for a wide range of performance metrics and fairness criteria, and support for inferred attributes, i.e., it does not require access to protected attributes at test time. Under the hood, FairPredictor works by adjusting the decision boundary for each group individually. Where groups are not available, it makes use of inferred group membership to adjust decision boundaries."
@@ -25,7 +25,7 @@
     {
         "composition_features": ["Categorical Attributes", "No Attributes at Inference"],
         "fairness_guarantee": "Guaranteed Fairness Level",
-        "fairness_type": "Group Fairness",
+        "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "F1-score Equality", "Min-Max"],
         "fairness_description": "OxonFair supports any fairness measure (including conditional fairness measures) that can be expressed per group as a weighted sum of True Positives, False Positives, True Negatives and False Negatives. OxenFair selects the solution that best optimizes the objective (performance) while satisfying the constraint (fairness bound)."
     },

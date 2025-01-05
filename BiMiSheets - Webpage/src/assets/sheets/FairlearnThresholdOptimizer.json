@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Thresholding",
+        "method_type": ["Thresholding"],
         "task": ["Binary prediction", "Hard labels"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"For each sensitive feature value, ThresholdOptimizer creates separate thresholds and applies them to the predictions of the user-provided estimator. To decide on the thresholds it generates all possible thresholds and selects the best combination in terms of the objective and the fairness constraints."

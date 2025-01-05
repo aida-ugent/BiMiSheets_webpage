@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Re-ranking",
+        "method_type": ["Re-ranking"],
         "task": ["Ranking"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"If there are any groups for which the minimum representation constraint is violated, choose the element with the highest score among those groups. Otherwise, among groups that do not violate the maximum constraint, pick the group that minimizes $ \\frac{\\lceil p_a * k \\rceil}{p_a} $. From this group, choose the element with the highest score."

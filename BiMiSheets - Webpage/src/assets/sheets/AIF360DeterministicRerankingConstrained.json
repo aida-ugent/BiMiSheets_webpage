@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Re-ranking",
+        "method_type": ["Re-ranking"],
         "task": ["Ranking"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Starting with 0, increase the value of k until the minimum representation constraint is increased for at least one group. If there are more than one such groups, order them according to the descending score of their highest-scoring candidates not yet in the ranking. For each group in the list above: 1. Insert the next candidate from the group to the next empty index in the ranking Swap the candidate towards earlier indices until: Either the score of the candidate in the earlier index is larger, or, 2. Swapping will violate the minimum condition for the group of the candidate in the earlier index."

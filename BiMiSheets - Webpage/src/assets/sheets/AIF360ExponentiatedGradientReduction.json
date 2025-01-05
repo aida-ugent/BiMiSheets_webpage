@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Constraint Optimisation",
+        "method_type": ["Constraint Optimisation"],
         "task": ["Binary Prediction"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Exponentiated gradient reduction is an in-processing technique that reduces fair classification to a sequence of cost-sensitive classification problems, returning a randomized classifier with the lowest empirical error subject to fair classification constraints."

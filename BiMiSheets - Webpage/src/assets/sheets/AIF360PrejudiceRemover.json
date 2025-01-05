@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Regularization",
+        "method_type": ["Regularization"],
         "task": ["Binary Prediction"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"The Prejudice Remover adds a penalty to the learning objective that aims to reduce 'indirect prejudice' - the mutual information between the protected attribute and the model's predictions."},

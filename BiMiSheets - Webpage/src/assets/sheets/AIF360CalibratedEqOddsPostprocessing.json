@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Calibration",
+        "method_type": ["Calibration"],
         "task": ["Binary Prediction"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Equalized Odds Post-Processing is a post-processing technique that seeks to attain scores that optimize (a relaxation of) equalized odds while the classifier remains calibrated. This is achieved by changing the probabilities of certain samples to the base rate of the group rather than the classifier's prediction."

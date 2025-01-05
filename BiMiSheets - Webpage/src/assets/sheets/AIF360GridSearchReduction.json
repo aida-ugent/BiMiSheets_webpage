@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Constraint Optimisation",
+        "method_type": ["Constraint Optimisation"],
         "task": ["Binary Prediction", "Hard Labels", "Regression"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Grid Search Reduction reduces the task to a sequence of cost-sensitive classification or regression problems, returning the deterministic classifier/regressor with the lowest empirical error subject to fairness constraints."

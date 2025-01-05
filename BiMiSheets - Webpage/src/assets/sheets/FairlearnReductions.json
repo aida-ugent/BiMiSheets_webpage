@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Constraint Optimization",
+        "method_type": ["Constraint Optimization"],
         "task": ["Binary Classification", "Regression"],
         "compatible_data": ["Tabular Data"],
         "method_description":"A learning reduction takes as input complex examples, transforms them into simpler examples, invokes an appropriate learning algorithm on the simpler examples, then transforms predictions on these simpler examples to a prediction on the complex examples \\cite{Beygelzimer2016}.  A fairness constraint is used to transform a binary classification or regression problem to a cost-sensitive problem."

@@ -22,7 +22,7 @@
       <div class="text-h4"> Method Description</div>
       <div class="text-body-1">
         <div class="label-container">
-          <div class="label type">{{ sheetcontent.description.method_type }}</div>
+          <div class="label type" v-for="methodType in sheetcontent.description.method_type">{{ methodType }}</div>
           <div class="label task" v-for="task in sheetcontent.description.task"> {{ task }} </div>
           <div class="label dataset-dependency" v-for="datasettype in sheetcontent.description.compatible_data"> {{ datasettype }}</div>
         </div>

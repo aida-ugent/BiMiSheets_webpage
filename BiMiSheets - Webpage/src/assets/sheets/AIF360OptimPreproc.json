@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Transformation",
+        "method_type": ["Transformation"],
         "task": ["Binary Classification"],
         "compatible_data": ["Tabular Datasets"],
         "method_description":"Optimized Preprocessing is a preprocessing technique that learns a probabilistic transformation that edits the features and labels in the data with group fairness, individual distortion, and data fidelity constraints and objectives."

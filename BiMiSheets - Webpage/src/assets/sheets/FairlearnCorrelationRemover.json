@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Transformation",
+        "method_type": ["Transformation"],
         "task": ["Task Independent"],
         "compatible_data": ["Tabular Data"],
         "method_description":"Sensitive features can be correlated with non-sensitive features in the dataset. By applying the CorrelationRemover, these correlations are projected away while details from the original data are retained as much as possible (as measured by the least-squares error)."

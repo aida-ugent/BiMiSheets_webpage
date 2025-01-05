@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Regularization",
+        "method_type": ["Regularization"],
         "task": ["Binary Classification", "Soft Labels"],
         "compatible_data": ["Tabular Datasets", "Image Datasets"],
         "method_description":"A FAIRRET quantifies a model’s unfairness as a single value that is minimized like any other objective through automatic differentiation."

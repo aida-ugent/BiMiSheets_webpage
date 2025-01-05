@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Adversarial Learning",
+        "method_type": ["Adversarial Learning"],
         "task": ["Binary Classification"],
         "compatible_data": ["Tabular Datasets"],
         "method_description":"LFR maps each individual, represented as a data point in a given input space, to a probability distribution in a new representation space. The aim of this new representation is to lose any information that can identify whether the person belongs to the protected subgroup, while retaining as much other information as possible."

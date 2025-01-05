@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Reweighing",
+        "method_type": ["Reweighing"],
         "task": ["Binary Classification"],
         "compatible_data": ["Tabular Datasets"],
         "method_description": "The tuples in the training dataset are assigned weights. By carefully choosing the weights, the training dataset can be made discrimination-free w.r.t. S without having to change any of the labels. The weights on the tuples can be used directly in any method based on frequency counts."

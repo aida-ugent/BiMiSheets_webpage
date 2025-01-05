@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Transformation",
+        "method_type": ["Transformation"],
         "task": ["Binary Prediction"],
         "compatible_data": ["Tabular Datasets"],
         "method_description":"Disparate Impact Remover changes the values of the labels while preserving ranking."

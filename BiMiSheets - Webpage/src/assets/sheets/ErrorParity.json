@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Thresholding",
+        "method_type": ["Thresholding"],
         "task": ["Binary Prediction", "Hard Labels"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Error-parity sets groupspecific acceptance thresholds so as to \\textbf{minimize risk while achieving an equality in error rates} across a desired set of groups. It is both simple and computationally efficient. Error-parity achieves exact error rate equality, unlike many preprocessing and inprocessing, which achieve some relaxation of the constraint. The method uses the output scores and returns hard prediction labels. "

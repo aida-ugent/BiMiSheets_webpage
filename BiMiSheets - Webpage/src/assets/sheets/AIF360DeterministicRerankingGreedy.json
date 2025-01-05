@@ -10,7 +10,7 @@
     },
     "description":
     {
-        "method_type": "Re-ranking",
+        "method_type": ["Re-ranking"],
         "task": ["Ranking"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"The attribute value with the highest next score among those that have not yet met their desired proportion is chosen. However, if there are any attribute values for which the desired proportion is about to be violated, the one with the highest next score among them is chosen."
