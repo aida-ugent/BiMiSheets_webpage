@@ -32,7 +32,7 @@
     "implementation":
     {
         "packages": [{"programming_language": "Python",
-                      "related_packages": [""] }],
+                      "related_packages": [] }],
         "description": "Input data has to be formatted as an AIF360 dataset."
     },
     "use_cases": 

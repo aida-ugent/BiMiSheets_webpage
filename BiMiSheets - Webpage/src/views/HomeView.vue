@@ -34,4 +34,8 @@ function getRandomInt(max: number): number {
   margin: auto;
 }
 
+main {
+  container-type: inline-size;
+}
+
 </style>

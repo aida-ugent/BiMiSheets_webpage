@@ -109,7 +109,7 @@ function removeCitation(inputText: string): string {
   border-width: 4px;
 }
 
-@media (min-width: 750px) {
+@container (min-width: 750px) {
   #bimisheet {
     width: 750px;
     margin: auto;

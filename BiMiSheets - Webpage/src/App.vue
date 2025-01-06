@@ -4,13 +4,22 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <v-toolbar title="BiMi Sheets" color="teal-darken-2"></v-toolbar> 
-  </header>
+  <v-layout>
+    <v-app-bar prominent color="teal-darken-2">
+      <v-toolbar-title to="/">BiMi Sheets</v-toolbar-title>
 
-  <div>
-    <RouterView />
-  </div>
+      <v-btn 
+        text="Overview"
+        to="/overview">
+        
+      </v-btn>
+    </v-app-bar>
+
+
+    <v-main id="main-content">
+      <RouterView />
+    </v-main>
+  </v-layout>
 </template>
 
 <style scoped>
@@ -19,6 +28,15 @@ header {
   display: block;
   max-height: 100vh;
 }
+
+.v-app-bar {
+  height: 64px;
+}
+
+#main-content {
+  width:100%
+}
+
 
 @media (min-width: 1024px) {
   .logo {
