@@ -29,10 +29,29 @@ import type { bimisheet } from '@/assets/types/bimisheet';
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+
+import { onBeforeMount } from 'vue';
+
 
 var selectedSheet: Ref<bimisheet | undefined> = ref(undefined);
 var searchedMethod: Ref<string | undefined> = ref(undefined);
 var viewableMethods: Ref<bimisheet[]> = ref(JSON.parse(JSON.stringify(allSheets)));
+
+onBeforeMount(() => {
+    try{
+        if (route.query.method && typeof(route.query.method) === "string"){
+            selectedSheet.value = getCorrespondingBiMiSheet(route.query.method);
+            window.scrollTo(0, 0)
+        }  
+    }
+    catch(error) {
+        console.log(error)
+    }
+})
 
 
 function newSheetSelected(sheet: bimisheet): void {
@@ -51,6 +70,15 @@ function filterMethods(methodName: string| undefined): void {
     else{
         viewableMethods.value = JSON.parse(JSON.stringify(allSheets));
     }
+}
+
+function getCorrespondingBiMiSheet(filename: string): bimisheet {
+    for (var i = 0; i < allSheets.length; i++) { 
+        if (allSheets[i].filename === filename) {
+            return allSheets[i];
+        }
+    }
+    throw Error("Sheet not found");
 }
 
 </script>

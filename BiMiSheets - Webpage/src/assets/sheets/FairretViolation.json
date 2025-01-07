@@ -17,7 +17,7 @@
     },
     "pipeline":
     {
-        "pipeline_location": "In-processing",
+        "pipeline_location": "In-Processing",
         "compatible_model": ["Neural Networks"],
         "model_description": "The method is designed to be implemented in neural networks, however any method that uses gradients could be used."
     },
@@ -26,7 +26,7 @@
         "composition_features": ["Parallel Attributes"],
         "fairness_guarantee": "Tunable Fairness Strength",
         "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score parity"],
+        "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score Equality"],
         "fairness_description": "A violation FAIRRET uses the proportion to which the fairness measure differs from the c-fixed measure as an added regularization term. This c-fixed measure is the average value for the measure within a batch, as this will be an integer it allows for the linear-fractional fairness measures to be transformed into linear equations. "
     },
     "implementation":

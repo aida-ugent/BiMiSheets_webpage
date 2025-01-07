@@ -12,12 +12,12 @@
     {
         "method_type": ["Adversarial Learning"],
         "task": ["Classification", "Regression"],
-        "compatible_data": ["Tabular Data"],
+        "compatible_data": ["Tabular Datasets"],
         "method_description":"The predictor network is constructed to solve the underlying supervised learning task, without considering fairness, by minimizing the predictor loss. However, to improve fairness, we do not only minimize the predictor loss, but we also want to decrease the adversary’s ability to predict the sensitive features from the predictor’s predictions (when implementing demographic parity), or jointly from the predictor’s predictions and true labels (when implementing equalized odds)."
     },
     "pipeline":
     {
-        "pipeline_location": "In-processing",
+        "pipeline_location": "In-Processing",
         "compatible_model": ["Neural Networks"],
         "model_description": "The neural network models cannot have an activation function or discrete prediction function on the final layer."
     },
@@ -31,7 +31,7 @@
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": ["scikit-learn", "PyTorch", "Tensorflow Keras"] }],
         "description": "The data needs to be provided as a 2D-arraylike of floats. The labels can be binary, categorical or float."
     },

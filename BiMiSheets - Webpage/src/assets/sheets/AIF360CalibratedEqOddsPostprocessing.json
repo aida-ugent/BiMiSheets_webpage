@@ -11,27 +11,27 @@
     "description":
     {
         "method_type": ["Calibration"],
-        "task": ["Binary Prediction"],
+        "task": ["Binary Classification"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Equalized Odds Post-Processing is a post-processing technique that seeks to attain scores that optimize (a relaxation of) equalized odds while the classifier remains calibrated. This is achieved by changing the probabilities of certain samples to the base rate of the group rather than the classifier's prediction."
     },
     "pipeline":
     {
-        "pipeline_location": "Post-processing",
+        "pipeline_location": "Post-Processing",
         "compatible_model": ["Calibrated Classifier"],
         "model_description": "Calibrated Equalized Odds Post-processing is compatible with any underlying learner that outputs a calibrated classifier with regards to the sensitive groups. "
     },
     "fairness":
     {
         "composition_features": ["Binary Attribute"],
-        "fairness_guarantee": "No Guaranteed Fairness Level",
+        "fairness_guarantee": "No Fairness Guarantee",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Equal Opportunity", "Predictive Equality", "Calibration"],
         "fairness_description": "The method aims to satisfy either the chosen fairness measure, while maintaining calibration between satisfiers. This is achieved by sacrificing performance for one group. Experimental results show no guarantee on the performance of the method."
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": ["scikit-learn"] }],
         "description": "While the concept of the method is compatible with any calibrated classifier, this implementation uses a set model type. The dataset must be passed in the AIF360 used format."
     },

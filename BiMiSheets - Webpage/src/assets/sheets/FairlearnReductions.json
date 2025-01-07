@@ -12,7 +12,7 @@
     {
         "method_type": ["Constraint Optimization"],
         "task": ["Binary Classification", "Regression"],
-        "compatible_data": ["Tabular Data"],
+        "compatible_data": ["Tabular Datasets"],
         "method_description":"A learning reduction takes as input complex examples, transforms them into simpler examples, invokes an appropriate learning algorithm on the simpler examples, then transforms predictions on these simpler examples to a prediction on the complex examples \\cite{Beygelzimer2016}.  A fairness constraint is used to transform a binary classification or regression problem to a cost-sensitive problem."
     },
     "pipeline":
@@ -24,14 +24,14 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Guaranteed Fairness Level",
+        "fairness_guarantee": "Fairness Guarantee",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality", "Overall Accuracy Equality", "Bounded Group Loss"],
         "fairness_description": "A difference bound is passed to the system which details the allowed fairness violation. The difference between two groups will be at most twice the value of this difference bound hyperparameter."
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                        "related_packages": ["scikit-learn", "Tensorflow Keras"] }],
         "description": "The reduction algorithms in Fairlearn only require a wrapper access to any 'base' learning algorithm, meaning that the 'base' algorithm only needs to implement fit and predict methods, as any standard scikit-learn estimator, but it does not need to have any knowledge of the desired fairness constraints or sensitive features."
     },

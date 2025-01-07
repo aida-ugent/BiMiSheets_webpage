@@ -17,8 +17,8 @@
     },
     "pipeline":
     {
-        "pipeline_location": "Pre-processing",
-        "compatible_model": ["Model with incorporates weigths"],
+        "pipeline_location": "Pre-Processing",
+        "compatible_model": ["Model which incorporates weigths"],
         "model_description": "The method is effectively model independent, however for the method to be useful then the model must be able to incorporate the weights produced by the method."
     },
     "fairness":

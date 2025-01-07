@@ -5,5 +5,5 @@ export interface implementation {
 
 interface packages {
     programming_language: string;
-    related_packages?: string[];
+    related_packages: string[];
 }

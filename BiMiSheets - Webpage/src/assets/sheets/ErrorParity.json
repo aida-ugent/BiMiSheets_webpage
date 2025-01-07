@@ -11,27 +11,27 @@
     "description":
     {
         "method_type": ["Thresholding"],
-        "task": ["Binary Prediction", "Hard Labels"],
+        "task": ["Binary Classification", "Hard Labels"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Error-parity sets groupspecific acceptance thresholds so as to \\textbf{minimize risk while achieving an equality in error rates} across a desired set of groups. It is both simple and computationally efficient. Error-parity achieves exact error rate equality, unlike many preprocessing and inprocessing, which achieve some relaxation of the constraint. The method uses the output scores and returns hard prediction labels. "
     },
     "pipeline":
     {
-        "pipeline_location": "Post-processing",
+        "pipeline_location": "Post-Processing",
         "compatible_model": ["Probabilistic Classifier"],
         "model_description": "Error-parity is compatible with any underlying learner that can produce scores of predicted probabilities. "
     },
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Guaranteed Fairness Level",
+        "fairness_guarantee": "Fairness Guarantee",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality"],
         "fairness_description": ""
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python 3.8-3.12",
+        "packages": [{"programming_language": "Python 3.8-3.12",
                       "related_packages": ["scikit-learn", "fairlearn"] }],
         "description": "The implementation requires a trained score predictor that takes in samples, X, in shape (num\\_samples, num\\_features), and outputs real-valued scores, R, in shape (num\\_samples,) as the model that feeds into error-parity. "
     },

@@ -12,27 +12,27 @@
     {
         "method_type": ["Transformation"],
         "task": ["Task Independent"],
-        "compatible_data": ["Tabular Data"],
+        "compatible_data": ["Tabular Datasets"],
         "method_description":"Sensitive features can be correlated with non-sensitive features in the dataset. By applying the CorrelationRemover, these correlations are projected away while details from the original data are retained as much as possible (as measured by the least-squares error)."
     },
     "pipeline":
     {
-        "pipeline_location": "Pre-processing",
+        "pipeline_location": "Pre-Processing",
         "compatible_model": ["Model Independent"],
         "model_description": "We expect the CorrelationRemover to be most appropriate as a preprocessing step for (generalized) linear models."
     },
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "No Guaranteed Fairness Level",
+        "fairness_guarantee": "No Fairness Guarantee",
         "fairness_type": ["Dataset Unbiasing"],
         "fairness_definitions": ["Removing Dataset Correlations"],
         "fairness_description": "The degree to which the correlation is removed can be tuned with the $\\alpha$ parameter."
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
-                      "related_packages": ["scikit-learn", "Pytorch", "Tensorflow Keras"] }],
+        "packages": [{"programming_language": "Python",
+                      "related_packages": ["scikit-learn", "PyTorch", "Tensorflow Keras"] }],
         "description": ""
     },
     "use_cases": 

@@ -11,19 +11,19 @@
     "description":
     {
         "method_type": ["Transformation"],
-        "task": ["Binary Prediction"],
+        "task": ["Binary Classification"],
         "compatible_data": ["Tabular Datasets"],
         "method_description":"Disparate Impact Remover changes the values of the labels while preserving ranking."
     },
     "pipeline":
     {
-        "pipeline_location": "Pre-processing",
+        "pipeline_location": "Pre-Processing",
         "compatible_model": ["Model Independent"],
         "model_description": "The original paper tested with Logistic Regression, Support Vector Machines, and Gaussian Naïve Bayes models. "
     },
     "fairness":
     {
-        "composition_features": ["Binary Attributes"],
+        "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Balanced Error Rate Parity"],

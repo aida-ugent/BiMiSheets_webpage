@@ -9,9 +9,16 @@ import HelloWorld from './components/HelloWorld.vue'
       <v-toolbar-title to="/">BiMi Sheets</v-toolbar-title>
 
       <v-btn 
+        text="Start"
+        to="/">
+      </v-btn>
+      <v-btn 
+        text="Search"
+        to="/search">
+      </v-btn>
+      <v-btn 
         text="Overview"
         to="/overview">
-        
       </v-btn>
     </v-app-bar>
 

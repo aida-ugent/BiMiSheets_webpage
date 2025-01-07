@@ -12,7 +12,7 @@
     {
         "method_type": ["Adversarial Learning", "Regularization"],
         "task": ["Binary Classification"],
-        "compatible_data": ["Tabular Dataset"],
+        "compatible_data": ["Tabular Datasets"],
         "method_description":"Adversarial debiasing is an in-processing technique that learns a classifier to maximize prediction accuracy and simultaneously reduce an adversary’s ability to determine the protected attribute from the predictions. This approach leads to a fair classifier as the predictions cannot carry any group discrimination information that the adversary can exploit."
     },
     "pipeline":
@@ -23,7 +23,7 @@
     },
     "fairness":
     {
-        "composition_features": ["Binary Attributes"],
+        "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity"],

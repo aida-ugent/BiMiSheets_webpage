@@ -10,14 +10,14 @@
     },
     "description":
     {
-        "method_type": ["Constraint Optimisation"],
-        "task": ["Binary Classifier"],
+        "method_type": ["Constraint Optimization"],
+        "task": ["Binary Classification"],
         "compatible_data": ["Tabular Datasets"],
         "method_description":"The MetaFair Classifier reduces classification with linear-fractional constraints to solving a small number of linear classification problems for carefully chosen parameters."
     },
     "pipeline":
     {
-        "pipeline_location": "In-processing",
+        "pipeline_location": "In-Processing",
         "compatible_model": ["Bayesian model"],
         "model_description": "The method has an accompanying model implementation used for predictions."
     },

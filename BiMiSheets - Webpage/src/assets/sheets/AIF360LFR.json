@@ -23,7 +23,7 @@
     },
     "fairness":
     {
-        "composition_features": ["Binary Attributes"],
+        "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
         "fairness_type": ["Group Fairness", "Individual Fairness"],
         "fairness_definitions": ["Demographic Parity"],

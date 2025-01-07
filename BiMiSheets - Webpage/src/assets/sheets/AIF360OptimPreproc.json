@@ -17,7 +17,7 @@
     },
     "pipeline":
     {
-        "pipeline_location": "Pre-processing",
+        "pipeline_location": "Pre-Processing",
         "compatible_model": ["Model Independent"],
         "model_description": "The original paper conducted experiments with Logistic Regression and Random Forest. \\cite{Calmon_2017}"
     },

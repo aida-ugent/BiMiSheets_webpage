@@ -10,15 +10,15 @@
     },
     "description":
     {
-        "method_type": ["Constraint Optimisation"],
-        "task": ["Binary Prediction", "Hard Labels", "Regression"],
+        "method_type": ["Constraint Optimization"],
+        "task": ["Binary Classification", "Hard Labels", "Regression"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Grid Search Reduction reduces the task to a sequence of cost-sensitive classification or regression problems, returning the deterministic classifier/regressor with the lowest empirical error subject to fairness constraints."
     },
     "pipeline":
     {
-        "pipeline_location": "In-processing",
-        "compatible_model": ["Any estimator"],
+        "pipeline_location": "In-Processing",
+        "compatible_model": ["Model Independent"],
         "model_description": "Grid Search Reduction is compatible with any underlying learner that can produce 0-1 predictions in the classification case, and any regression model in the regression case."
     },
     "fairness":
@@ -31,7 +31,7 @@
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": ["scikit-learn", "aif360"] }],
         "description": "Input data has to be formatted as an AIF360 dataset. Users are required to provide a classifier or regression model satisfying scikit-learn conventions for the 'fit' and 'predict' methods. In the classification case, 'predict' should yield 0-1 outputs."
     },

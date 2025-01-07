@@ -11,13 +11,13 @@
     "description":
     {
         "method_type": ["Thresholding"],
-        "task": ["Binary Prediction", "Hard Labels"],
+        "task": ["Binary Classification", "Hard Labels"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Reject option classification is a postprocessing technique that gives favorable outcomes to unpriviliged groups and unfavorable outcomes to priviliged groups in a confidence band around the decision boundary with the highest uncertainty. This is done by flipping the labels for the samples of these groups close to the decision boundary."
     },
     "pipeline":
     {
-        "pipeline_location": "Post-processing",
+        "pipeline_location": "Post-Processing",
         "compatible_model": ["Probabilistic Classifier"],
         "model_description": "Reject Option Classification is compatible with any underlying learner that can produce scores of predicted probabilities."
     },
@@ -31,7 +31,7 @@
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": ["scikit-learn"] }],
         "description": "Input data has to be formatted as an AIF360 dataset."
     },

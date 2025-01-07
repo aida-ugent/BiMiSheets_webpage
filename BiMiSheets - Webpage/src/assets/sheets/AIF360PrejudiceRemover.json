@@ -11,12 +11,12 @@
     "description":
     {
         "method_type": ["Regularization"],
-        "task": ["Binary Prediction"],
+        "task": ["Binary Classification"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"The Prejudice Remover adds a penalty to the learning objective that aims to reduce 'indirect prejudice' - the mutual information between the protected attribute and the model's predictions."},
     "pipeline":
     {
-        "pipeline_location": "In-processing",
+        "pipeline_location": "In-Processing",
         "compatible_model": ["Logistic Regression"],
         "model_description": "This bias mitigation method is currently only implemented for logistic regression."
     },
@@ -30,7 +30,7 @@
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": [] }],
         "description": "Input data has to be formatted as an AIF360 dataset. "
     },

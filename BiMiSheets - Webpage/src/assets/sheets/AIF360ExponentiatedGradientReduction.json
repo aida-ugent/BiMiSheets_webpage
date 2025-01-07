@@ -10,28 +10,28 @@
     },
     "description":
     {
-        "method_type": ["Constraint Optimisation"],
-        "task": ["Binary Prediction"],
+        "method_type": ["Constraint Optimization"],
+        "task": ["Binary Classification"],
         "compatible_data": ["Dataset Independent"],
         "method_description":"Exponentiated gradient reduction is an in-processing technique that reduces fair classification to a sequence of cost-sensitive classification problems, returning a randomized classifier with the lowest empirical error subject to fair classification constraints."
     },
     "pipeline":
     {
-        "pipeline_location": "In-processing",
-        "compatible_model": ["Scikit-learn classifiers"],
+        "pipeline_location": "In-Processing",
+        "compatible_model": ["Model Independent"],
         "model_description": "Grid Search Reduction is compatible with any underlying learner that can produce 0-1 predictions."
     },
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Guaranteed fairness level",
+        "fairness_guarantee": "Fairness Guarantee",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality"],
         "fairness_description": "A difference bound is passed to the system which details the allowed fairness violation. The difference between two groups will be at most twice the value of this difference bound hyperparameter."
     },
     "implementation":
     {
-        "packages": [{"programming_language": "python",
+        "packages": [{"programming_language": "Python",
                       "related_packages": ["scikit-learn"] }],
         "description": "Input data has to be formatted as an AIF360 dataset. Users are required to provide a classifier or regression model satisfying scikit-learn conventions for the 'fit' and 'predict' methods (wth 0-1 outputs for 'predict')."
     },
