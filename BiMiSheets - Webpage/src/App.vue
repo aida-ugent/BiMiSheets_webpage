@@ -20,6 +20,10 @@ import HelloWorld from './components/HelloWorld.vue'
         text="Overview"
         to="/overview">
       </v-btn>
+      <v-btn 
+        text="Create"
+        to="/create">
+      </v-btn>
     </v-app-bar>
 
 

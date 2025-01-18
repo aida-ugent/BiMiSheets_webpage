@@ -127,9 +127,22 @@ export function presentLicenses(): string[] {
     for (var i = 0; i < allSheets.length; i++) { 
         if (allSheets[i].metadata.license){
             if (!(presentMethodsList.includes(allSheets[i].metadata.license!))) {
-                presentMethodsList.push(allSheets[i].fairness.fairness_guarantee);
+                presentMethodsList.push(allSheets[i].metadata.license!);
             }
         }
+    }
+    return presentMethodsList.sort()
+}
+
+
+export function presentUseCases(): string[] {
+    var presentMethodsList: string[] = []
+    for (var i = 0; i < allSheets.length; i++) {
+        for (var j = 0; j < allSheets[i].use_cases.cases.length; j++){
+            if (!(presentMethodsList.includes(allSheets[i].use_cases.cases[j]))) {
+                presentMethodsList.push(allSheets[i].use_cases.cases[j]);
+            }
+        } 
     }
     return presentMethodsList.sort()
 }
