@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'search',
       component: () => import('../views/FilterSearch.vue'),
     },
+    {
+      path: '/create',
+      name: 'create',
+      component: () => import('../views/CreateSheet.vue'),
+    },
   ],
 })
 
