@@ -24,7 +24,7 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes", "No Attributes at Inference"],
-        "fairness_guarantee": "Fairness Guarantee",
+        "fairness_guarantee": "Fairness Guaranteed",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "F1-score Equality", "Min-Max"],
         "fairness_description": "OxonFair supports any fairness measure (including conditional fairness measures) that can be expressed per group as a weighted sum of True Positives, False Positives, True Negatives and False Negatives. OxenFair selects the solution that best optimizes the objective (performance) while satisfying the constraint (fairness bound)."
