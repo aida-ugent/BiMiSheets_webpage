@@ -24,7 +24,7 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Fairness Guarantee",
+        "fairness_guarantee": "Fairness Guaranteed",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity"],
         "fairness_description": "ThresholdOptimizer is built to satisfy the specified fairness criteria exactly and with no remaining disparity. In many cases this comes at the expense of performance, for example, with significantly lower accuracy. Regardless, it provides an interesting data point for comparison with other models."

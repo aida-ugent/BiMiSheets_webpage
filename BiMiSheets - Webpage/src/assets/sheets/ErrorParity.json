@@ -24,7 +24,7 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Fairness Guarantee",
+        "fairness_guarantee": "Fairness Guaranteed",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality"],
         "fairness_description": ""

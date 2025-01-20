@@ -24,7 +24,7 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Fairness Guarantee",
+        "fairness_guarantee": "Fairness Guaranteed",
         "fairness_type": ["Group Fairness"],
         "fairness_definitions": ["Demographic Parity", "Equalized Odds", "Equal Opportunity", "Predictive Equality", "Overall Accuracy Equality", "Bounded Group Loss"],
         "fairness_description": "A difference bound is passed to the system which details the allowed fairness violation. The difference between two groups will be at most twice the value of this difference bound hyperparameter."
