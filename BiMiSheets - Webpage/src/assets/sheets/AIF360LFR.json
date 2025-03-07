@@ -25,8 +25,11 @@
     {
         "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness", "Individual Fairness"],
-        "fairness_definitions": ["Demographic Parity"],
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity"]},
+            {"fairness_type": "Individual Fairness",
+            "fairness_definitions": []}],
         "fairness_description": "The method minimizes an objection which is a combination of demographic parity, information loss in the representation, and accuracy loss of the prediction label. The strength for each of these elements can be tuned."
     },
     "implementation":

@@ -25,8 +25,9 @@
     {
         "composition_features": ["Categorical Attributes"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity", "Predictive Parity"],
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity", "Predictive Parity"]}],
         "fairness_description": "The original model can satisfy any linear-fractional statistic, however only two are implemented here. The difference in fairness measure is noted as a fraction of the measures."
     },
     "implementation":

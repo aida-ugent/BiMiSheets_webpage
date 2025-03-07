@@ -24,8 +24,9 @@
     {
         "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity"],
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity"]}],
         "fairness_description": "The penalization terms aims to reduce 'indirect prejudice', minimizing mutual information between model predictions and sensitive attributes."
     },
     "implementation":

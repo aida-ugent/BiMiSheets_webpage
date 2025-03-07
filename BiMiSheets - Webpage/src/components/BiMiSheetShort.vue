@@ -9,7 +9,7 @@
         <div class="label compatible-model" v-for="model in sheetcontent.pipeline.compatible_model"> {{ model }} </div>
         <div class="label attribute-types" v-for="attr in sheetcontent.fairness.composition_features"> {{ attr }} </div>
         <div class="label fairness-degree"> {{ sheetcontent.fairness.fairness_guarantee }}</div>
-        <div class="label fairness-type" v-for="fairtype in sheetcontent.fairness.fairness_type"> {{ fairtype }} </div>
+        <div class="label fairness-type" v-for="fairdeftype in sheetcontent.fairness.fairness_type_defs"> {{ fairdeftype.fairness_type }} </div>
         <div class="label-container"v-for="implementation in sheetcontent.implementation.packages">
             <div class="label programming-language"> {{ implementation.programming_language }} </div>
             <div class="label compatible-package" v-if="implementation.related_packages" v-for="comp_package in implementation.related_packages"> {{ comp_package }}</div>

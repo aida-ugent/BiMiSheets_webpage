@@ -23,10 +23,11 @@
     },
     "fairness":
     {
-        "composition_features": ["Categorical Attributes","Numerical Attributes"],
+        "composition_features": ["Categorical Attributes","Numerical Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity", "Equalized Odds"],
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity", "Equalized Odds"]}],
         "fairness_description": "Fairness is achieved by minimizing the adversary's ability to predict the sensitive attribute. This is trade-off with the regular loss of the system, the strength of the fairness intervention can be tuned through a hyperparameter."
     },
     "implementation":

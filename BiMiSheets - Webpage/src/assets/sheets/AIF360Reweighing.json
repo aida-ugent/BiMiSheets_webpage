@@ -25,8 +25,9 @@
     {
         "composition_features": ["Binary Attribute"],
         "fairness_guarantee": "No Fairness Guarantee",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity"],
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity"]}],
         "fairness_description": "The reweighing factor is the fraction of the expected frequency to the observed frequency wrt the combination of sensitive attribute and its class."
     },
     "implementation":

@@ -50,10 +50,10 @@ export function presentCompatibleModels(): string[] {
 
 export function presentFairnessTypes(): string[] {
     var presentMethodsList: string[] = []
-    for (var i = 0; i < allSheets.length; i++) { 
-        for (var j = 0; j < allSheets[i].fairness.fairness_type.length; j++){
-            if (!(presentMethodsList.includes(allSheets[i].fairness.fairness_type[j]))) {
-                presentMethodsList.push(allSheets[i].fairness.fairness_type[j]);
+    for (var i = 0; i < allSheets.length; i++) {
+        for (var j = 0; j < allSheets[i].fairness.fairness_type_defs.length; j++){
+            if (!(presentMethodsList.includes(allSheets[i].fairness.fairness_type_defs[j].fairness_type))) {
+                presentMethodsList.push(allSheets[i].fairness.fairness_type_defs[j].fairness_type);
             }
         }
     }
@@ -63,9 +63,11 @@ export function presentFairnessTypes(): string[] {
 export function presentFairnessDef(): string[] {
     var presentMethodsList: string[] = []
     for (var i = 0; i < allSheets.length; i++) { 
-        for (var j = 0; j < allSheets[i].fairness.fairness_definitions.length; j++){
-            if (!(presentMethodsList.includes(allSheets[i].fairness.fairness_definitions[j]))) {
-                presentMethodsList.push(allSheets[i].fairness.fairness_definitions[j]);
+        for (var j = 0; j < allSheets[i].fairness.fairness_type_defs.length; j++){
+            for (var k = 0; k < allSheets[i].fairness.fairness_type_defs[j].fairness_definitions.length; k++){
+                if (!(presentMethodsList.includes(allSheets[i].fairness.fairness_type_defs[j].fairness_definitions[k]))) {
+                    presentMethodsList.push(allSheets[i].fairness.fairness_type_defs[j].fairness_definitions[k]);
+                }
             }
         }
     }

@@ -23,11 +23,15 @@
     },
     "fairness":
     {
-        "composition_features": ["Parallel Attributes"],
+        "composition_features": ["Parallel Attributes", "Numerical Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score Equality"],
-        "fairness_description": "A violation FAIRRET uses the proportion to which the fairness measure differs from the c-fixed measure as an added regularization term. This c-fixed measure is the average value for the measure within a batch, as this will be an integer it allows for the linear-fractional fairness measures to be transformed into linear equations. "
+        "fairness_type_defs": [
+            {
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score Equality"]
+            }
+        ],
+        "fairness_description": "A violation FAIRRET uses the proportion to which the fairness measure differs from the c-fixed measure as an added regularization term. This c-fixed measure is the average value for the measure within a batch, as this will be an integer it allows for the linear-fractional fairness measures to be transformed into linear equations. The method can account for numerical attributes, however linear behavior is expected."
     },
     "implementation":
     {

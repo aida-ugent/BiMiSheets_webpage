@@ -6,7 +6,7 @@
         "authors": "AIF360",
         "version": "0.6.1",
         "license": "Apache 2.0",
-        "source_paper": "\\textit{Fairness-Aware Ranking in Search \\& Recommendation Systems with Application to LinkedIn Talent Search} \\cite{geyik2019fairness}"
+        "source_paper": "Fairness-Aware Ranking in Search & Recommendation Systems with Application to LinkedIn Talent Search \\cite{geyik2019fairness}"
     },
     "description":
     {
@@ -25,9 +25,10 @@
     {
         "composition_features": ["Categorical Attributes"],
         "fairness_guarantee": "Fairness Guaranteed",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Adjusted Demographic Parity"],
-        "fairness_description": "The Deterministic Reranker allows to set a desired proportion $p_a$ per demographic group $ a $. Given k samples, the algorithm ensures that the number of selected candidates from each group $n_a$ satisfies $ \\lfloor p_a * k \\rfloor \\leq n_a \\leq \\lceil p_a * k \\rceil $."
+        "fairness_type_defs": [
+            {"fairness_type": "Group Fairness",
+            "fairness_definitions": ["Adjusted Demographic Parity"]}],
+        "fairness_description": "The Deterministic Reranker allows to set a desired proportion $p_a$ per demographic group $ a $. Given k samples, the algorithm ensures that the number of selected candidates from each group $n_a$ satisfies."
     },
     "implementation":
     {

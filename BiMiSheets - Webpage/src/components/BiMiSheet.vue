@@ -47,8 +47,10 @@
         <div class="label-container">
           <div class="label attribute-types" v-for="attr in sheetcontent.fairness.composition_features"> {{ attr }} </div>
           <div class="label fairness-degree"> {{ sheetcontent.fairness.fairness_guarantee }}</div>
-          <div class="label fairness-type" v-for="fairtype in sheetcontent.fairness.fairness_type"> {{ fairtype }} </div>
-          <div class="label fairness-def" v-for="def in sheetcontent.fairness.fairness_definitions"> {{ def }}</div>
+          <template v-for="fairness_type_defs in sheetcontent.fairness.fairness_type_defs">
+            <div class="label fairness-type" > {{ fairness_type_defs.fairness_type }} </div>
+            <div class="label fairness-def" v-for="def in fairness_type_defs.fairness_definitions"> {{ def }}</div>
+          </template>
         </div>
         <div class="pt-2"> {{ sheetcontent.fairness.fairness_description }}</div>
       </div>

@@ -24,10 +24,11 @@
     "fairness":
     {
         "composition_features": ["Categorical Attributes"],
-        "fairness_guarantee": "Fairness Guarantee on Dataset",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity"],
-        "fairness_description": "The method ensures that the fraction between positive rates is smaller than a hyperparameter epsilon, while keeping the distortion on the features under a given threshold."
+        "fairness_guarantee": "Fairness Guaranteed",
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity"]}],
+        "fairness_description": "The fairness guarantee is provided on the dataset, not the model outcome. The method ensures that the fraction between positive rates is smaller than a hyperparameter epsilon, while keeping the distortion on the features under a given threshold."
     },
     "implementation":
     {

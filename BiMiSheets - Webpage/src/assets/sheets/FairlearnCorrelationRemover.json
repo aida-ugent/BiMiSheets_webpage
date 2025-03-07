@@ -25,8 +25,9 @@
     {
         "composition_features": ["Categorical Attributes"],
         "fairness_guarantee": "No Fairness Guarantee",
-        "fairness_type": ["Dataset Unbiasing"],
-        "fairness_definitions": ["Removing Dataset Correlations"],
+        "fairness_type_defs": [{
+            "fairness_type": "Dataset Unbiasing",
+            "fairness_definitions": ["Removing Dataset Correlations"]}],
         "fairness_description": "The degree to which the correlation is removed can be tuned with the $\\alpha$ parameter."
     },
     "implementation":

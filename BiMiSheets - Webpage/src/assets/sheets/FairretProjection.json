@@ -23,11 +23,12 @@
     },
     "fairness":
     {
-        "composition_features": ["Parallel Attributes"],
+        "composition_features": ["Parallel Attributes", "Numerical Attribute"],
         "fairness_guarantee": "Tunable Fairness Strength",
-        "fairness_type": ["Group Fairness"],
-        "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score Equality"],
-        "fairness_description": "The method calculates the loss term by determining the distance of the model to the c-fixed fair set of models. Instead of using the linear-fractional models directly, the measures are set to the average value of the measure in a batch, allowing to transform them to linear constraints. These linear constraints constitute the fair set."
+        "fairness_type_defs": [{
+            "fairness_type": "Group Fairness",
+            "fairness_definitions": ["Demographic Parity", "Equal Opportunity", "Predictive Equality", "Predictive Parity", "False Omission Rate Parity", "Overall Accuracy Equality", "Treatment Equality", "F1-score Equality"]}],
+        "fairness_description": "The method calculates the loss term by determining the distance of the model to the c-fixed fair set of models. Instead of using the linear-fractional models directly, the measures are set to the average value of the measure in a batch, allowing to transform them to linear constraints. These linear constraints constitute the fair set. The method can account for numerical attributes, however linear behavior is expected."
     },
     "implementation":
     {

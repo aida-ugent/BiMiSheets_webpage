@@ -135,7 +135,7 @@ function downloadJson(): void {
     const metaDataJson: metadata = {
       name: methodName.value!,
       authors: authorNames.value!,
-      version: versionName.value,
+      version: versionName.value!,
       license: licenseName.value,
       source_paper: sourcePaper.value
     }
@@ -155,8 +155,10 @@ function downloadJson(): void {
     const fairnessJson: fairness_info = {
       composition_features: compSensitiveAttr.value,
       fairness_guarantee: fairnessGuarantee.value!,
-      fairness_type: [fairnessType.value!],
-      fairness_definitions: fairnessDefinition.value,
+      fairness_type_defs: [{
+        fairness_type: fairnessType.value!,
+        fairness_definitions: fairnessDefinition.value
+      }],
       fairness_description: fairnessDescription.value!
     }
 

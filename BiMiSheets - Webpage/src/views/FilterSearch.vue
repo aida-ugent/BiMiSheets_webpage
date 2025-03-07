@@ -22,7 +22,9 @@
             <v-select class="select-option" label="Programming Language" v-model="filterProgramLang" :items="allProgramLang" multiple chips ></v-select>
             <v-select class="select-option" label="Compatible Packages" v-model="filterCompPack" :items="allCompPack" multiple chips ></v-select>
         </div>
+        
         <div id="possible-methods">
+            <div class="text-subtitle-1 pl-5"> Number of results: {{ methodCount }}</div>
             <div id="individual-sheet-container" v-for="sheet in viewableMethods">
                 <BiMiSheetShort :sheetcontent="sheet"></BiMiSheetShort>
             </div>
@@ -52,9 +54,9 @@ const allMLTasks: Ref<string[]> = ref(presentMLTasks());
 const allDatasetTypes: Ref<string[]> = ref(presentDatasetTypes());
 const allPipelineLocations: Ref<string[]> = ref(["Pre-Processing", "In-Processing", "Post-Processing"])
 const allCompatibleModels: Ref<string[]> = ref(presentCompatibleModels())
-const allSensAttr: Ref<string[]> = ref(["Binary Attribute", "Categorical Attributes", "Parallel Attributes", "Numerical Attributes", "No Attributes at Inference"])
+const allSensAttr: Ref<string[]> = ref(["Binary Attribute", "Categorical Attributes", "Parallel Attributes", "Numerical Attribute", "No Attributes at Inference"])
 // const allSensAttr: Ref<string[]> = ref(presentSensAttr());
-const allFairnessGuarantee: Ref<string[]> = ref(["Fairness Guarantee", "Tunable Fairness Strength", "No Fairness Guarantee", "Fairness Guarantee on Dataset"])
+const allFairnessGuarantee: Ref<string[]> = ref(["Fairness Guaranteed", "Tunable Fairness Strength", "No Fairness Guarantee"])
 // const allFairnessGuarantee: Ref<string[]> =ref(presentFairnessGuarantee())
 const allFairnessTypes: Ref<string[]> = ref(presentFairnessTypes())
 const allFairnessDef: Ref<string[]> = ref(presentFairnessDef())
@@ -73,6 +75,8 @@ var filterFairnessType: Ref<string[]> = ref([]);
 var filterFairnessDef: Ref<string[]> = ref([]);
 var filterProgramLang: Ref<string[]> = ref([]);
 var filterCompPack: Ref<string[]> = ref([]);
+
+var methodCount: Ref<number> = ref(viewableMethods.value.length);
 
 
 function filterMethodsName(methodName: string| undefined): void {
@@ -168,8 +172,8 @@ function filterViewableSheets(): void {
             }
             if (filterFairnessType.value.length > 0){
                 var count: number = 0;
-                for (var j = 0; j < allSheets[i].fairness.fairness_type.length; j++) {
-                    if (filterFairnessType.value.includes(allSheets[i].fairness.fairness_type[j])){
+                for (var j = 0; j < allSheets[i].fairness.fairness_type_defs.length; j++) {
+                    if (filterFairnessType.value.includes(allSheets[i].fairness.fairness_type_defs[j].fairness_type)){
                         count++;
                     }
                 }
@@ -179,9 +183,11 @@ function filterViewableSheets(): void {
             }
             if (filterFairnessDef.value.length > 0){
                 var count: number = 0;
-                for (var j = 0; j < allSheets[i].fairness.fairness_definitions.length; j++) {
-                    if (filterFairnessDef.value.includes(allSheets[i].fairness.fairness_definitions[j])){
-                        count++;
+                for (var j = 0; j < allSheets[i].fairness.fairness_type_defs.length; j++) {
+                    for (var k = 0; k < allSheets[i].fairness.fairness_type_defs[j].fairness_definitions.length; k++) {
+                        if (filterFairnessDef.value.includes(allSheets[i].fairness.fairness_type_defs[j].fairness_definitions[k])){
+                            count++;
+                        }
                     }
                 }
                 if (count === 0) {
@@ -231,6 +237,7 @@ function filterViewableSheets(): void {
     else {
         viewableMethods.value = allSheets;
     }
+    // methodCount = viewableMethods.value.length;
 }
 
 // Watchers for the v-selects
