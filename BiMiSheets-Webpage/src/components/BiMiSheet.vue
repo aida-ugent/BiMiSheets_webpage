@@ -1,8 +1,8 @@
 <template>
-  <div id="bimisheet">
+  <div id="bimisheet" ref="rootEl">
     <div class="text-h3">{{ sheetcontent.metadata.name}}: BiMi Sheet</div>
 
-    <div id="metadata-container">
+    <div id="metadata-container" class="avoid-break">
       <div class="text-h4"> Metadata </div>
       <div class="text-body-1">
         <div>Name: {{ sheetcontent.metadata.name }}</div>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div id="method-description">
+    <div id="method-description" class="avoid-break">
       <div class="text-h4"> Method Description</div>
       <div class="text-body-1">
         <div class="label-container">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div id="pipeline-architecture-container">
+    <div id="pipeline-architecture-container" class="avoid-break">
       <div class="text-h4"> Pipeline Architecture</div>
       <div class="text-body-1">
         <div class="label-container">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <div id="fairness-type-container">
+    <div id="fairness-type-container" class="avoid-break">
       <div class="text-h4"> Fairness Type </div>
       <div class="text-body-1">
         <div class="label-container">
@@ -60,7 +60,7 @@
       </div>
     </div>
     
-    <div id="implementation-container">
+    <div id="implementation-container" class="avoid-break">
       <div class="text-h4"> Implementation Constraints</div>
       <div class="text-body-1">
         <div class="label-container"v-for="implementation in sheetcontent.implementation.packages">
@@ -73,7 +73,7 @@
       </div>
     </div>
     
-    <div id="use-case-container">
+    <div id="use-case-container" class="avoid-break">
       <div class="text-h4"> Tested Use Cases </div>
       <div class="text-body-1">
           <div class="label-container">
@@ -90,8 +90,15 @@
 
 <script setup lang="ts">
 import type { bimisheet } from '@/assets/types/bimisheet';
-import { watch } from 'vue';
+import { ref } from 'vue';
 import { onMounted } from 'vue';
+
+const rootEl = ref(null)
+
+// Make rootEl accessible to the parent via expose()
+defineExpose({
+  el: rootEl
+})
 
 const props = defineProps<{
   sheetcontent: bimisheet
@@ -119,6 +126,11 @@ function removeCitation(inputText: string): string {
     width: 750px;
     margin: auto;
   }
+}
+
+.avoid-break {
+  break-inside: avoid;        /* keep block elements together */
+  page-break-inside: avoid;   /* legacy alias */
 }
 
 

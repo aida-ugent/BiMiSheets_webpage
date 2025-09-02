@@ -16,7 +16,10 @@
             </v-list>
             </div>
         <div id="sheet-container" class="pt-16 pb-16" v-if="selectedSheet">
-            <BiMiSheet :sheetcontent=selectedSheet></BiMiSheet>
+            <div class="button-container" v-if="selectedSheet">
+                <v-btn density="default" icon="mdi-download" @click="downloadPDF"></v-btn>
+            </div>
+            <BiMiSheet :sheetcontent=selectedSheet ref="pdfContent"></BiMiSheet>
         </div>
     </main>
   </template>
@@ -35,6 +38,7 @@ const route = useRoute()
 import { onBeforeMount } from 'vue';
 import axios from 'axios';
 
+const pdfContent = ref(null)
 
 var selectedSheet: Ref<bimisheet | undefined> = ref(undefined);
 var searchedMethod: Ref<string | undefined> = ref(undefined);
@@ -85,6 +89,61 @@ function filterMethods(methodName: string| undefined): void {
     }
 }
 
+async function downloadPDF(): Promise<void> {  
+  // Reference to the HTML element containing the content to export
+  // @ts-ignore: Unreachable code error
+  const content = pdfContent.value?.el;
+
+  const printWindow = window.open("", "_blank")
+  if (!printWindow) return;
+
+  // Grab all stylesheets from the current document
+  const styles = Array.from(document.styleSheets)
+    .map((sheet) => {
+      try {
+        if (sheet.href) {
+          // External stylesheet
+          return `<link rel="stylesheet" href="${sheet.href}">`
+          // @ts-ignore: Unreachable code error
+        } else if (sheet.ownerNode && sheet.ownerNode.innerHTML) {
+          // Inline <style> block
+          // @ts-ignore: Unreachable code error
+          return `<style>${sheet.ownerNode.innerHTML}</style>`
+        }
+      } catch (e) {
+        // Some stylesheets (like from extensions) may throw CORS errors
+        return ""
+      }
+    })
+    .join("\n")
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>BiMi Sheet</title>
+        ${styles}
+        <style>
+          /* Print-specific overrides */
+          @page { margin: 20mm; }
+          body { font-family: sans-serif; margin: 0; padding: 0; }
+
+          /* Ensure backgrounds & colors are preserved */
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        </style>
+      </head>
+      <body>${content.innerHTML}</body>
+    </html>
+  `)
+  printWindow.document.close()
+  printWindow.focus()
+  printWindow.print()
+  printWindow.close()
+};
+
 </script>
 
 <style scoped>
@@ -99,6 +158,11 @@ main {
     height: calc(100vh - 64px);
     position: fixed;
     width: 25%;
+}
+
+.button-container{
+    float: right;
+    margin-right: 10px;
 }
 
 #filter-icon {

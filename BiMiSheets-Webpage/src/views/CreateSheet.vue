@@ -59,17 +59,71 @@
 
           <v-textarea label="Performance information of the method" v-model="useCaseDescription" class="full-width "></v-textarea>
         </div>
-        <v-btn class="mt-2 full-width" type="submit" @click="downloadJson" block >Download JSON</v-btn>
+        <div>
+          <v-btn class="mt-2 full-width" type="submit" @click="openSheetModel" block >Create Sheet</v-btn>
+        </div>
     </v-container>
+
+    <v-dialog id="sheet-preview" v-model="openedBiMiSheetModal" width="auto" class="modal">
+      <v-card  class="modal-content modal" >
+        <v-toolbar>
+          
+
+          <v-toolbar-title>Example BiMiSheet</v-toolbar-title>
+
+          <v-toolbar-items>
+            <v-btn icon="mdi-close" @click="openedBiMiSheetModal = false"></v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <BiMiSheet v-if="tempBiMiSheetModal" :sheetcontent=tempBiMiSheetModal class="ma-6" ref="pdfContent"></BiMiSheet>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-snackbar style="z-index: 9000;">
+            Automatic uploads to BiMi Sheet is not possible at the moment. If you want your method included on the website, please download the JSON and send it to marybeth.defrance@ugent.be . 
+            <template #activator="{ props }">
+              <span v-bind="props">
+                <v-btn color="secondary">
+                  Upload
+                </v-btn>
+              </span>
+            </template>
+          </v-snackbar>
+
+          <v-menu
+            transition="slide-y-transition"
+          >
+            <template v-slot:activator="{ props }">
+              <v-btn
+                color="primary"
+                v-bind="props"
+              >
+                Download
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="downloadPDF">
+                <v-list-item-title >Download PDF</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="downloadJson">
+                <v-list-item-title>Download JSON</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     </v-app>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import type { Ref } from 'vue';
 import { onBeforeMount } from 'vue';
 import download from "downloadjs";
+
+import BiMiSheet from '@/components/BiMiSheet.vue';
+
 import type { bimisheet } from '@/assets/types/bimisheet';
 import type { method_description } from '@/assets/types/method_description';
 import type { metadata } from '@/assets/types/metadata';
@@ -78,6 +132,10 @@ import type { fairness_info } from '@/assets/types/fairness_info';
 import type { implementation } from '@/assets/types/implementation';
 import type { use_cases } from '@/assets/types/use_cases';
 import axios from 'axios';
+import html2pdf from 'html2pdf.js';
+
+var openedBiMiSheetModal: Ref<boolean> = ref(false);
+var tempBiMiSheetModal: Ref<bimisheet> | Ref<null> = ref(null);
 
 var methodName: Ref<string | undefined> = ref(undefined);
 var authorNames: Ref<string | undefined> = ref(undefined);
@@ -106,7 +164,8 @@ var implementationDetails: Ref<string | undefined> = ref(undefined);
 
 var testedDatasets: Ref<string[]> = ref([]);
 var useCaseDescription: Ref<string | undefined> = ref(undefined);
-  
+
+const pdfContent = ref(null)
 
 const currentLicenses: string[] = [];
 
@@ -126,6 +185,8 @@ var currentProgrammingLanguage: Ref<string[]> = ref([]);
 var currentPackages: Ref<string[]> = ref([]);
 
 var currentTestedDatasets: Ref<string[]> = ref([]);
+
+var isLoading: Ref<boolean> = ref(false);
 
 onBeforeMount (() => {
   axios.get(import.meta.env.VITE_BACKEND_URL +"/unique/method_types").then(function (response) {
@@ -169,7 +230,7 @@ onBeforeMount (() => {
   })
 })
 
-function downloadJson(): void {
+function createJSONfromInput(): bimisheet | undefined {
   try{
     const metaDataJson: metadata = {
       name: methodName.value!,
@@ -223,17 +284,105 @@ function downloadJson(): void {
       use_cases: useCasesJson,
       bibliography: []
     }
-    download(JSON.stringify(newBiMiSheet), methodName.value! + ".json", "text/plain");
+    return (newBiMiSheet);
+    
 
   } catch(error) {
     console.error(error)
   }
-  
 }
 
+function downloadJson(): void {
+  try {
+    var newBiMiSheet = createJSONfromInput();
+  download(JSON.stringify(newBiMiSheet), methodName.value! + ".json", "text/plain");
+  } catch(error) {
+    console.error(error)
+  }  
+}
+
+async function downloadPDF(): Promise<void> {
+  // Set the loading state to true to indicate the process has started
+  isLoading.value = true;
+  
+  console.log(pdfContent)
+  // Reference to the HTML element containing the content to export
+  // @ts-ignore: Unreachable code error
+  const content = pdfContent.value?.el;
+
+  const printWindow = window.open("", "_blank")
+  if (!printWindow) return;
+
+  // Grab all stylesheets from the current document
+  const styles = Array.from(document.styleSheets)
+    .map((sheet) => {
+      try {
+        if (sheet.href) {
+          // External stylesheet
+          return `<link rel="stylesheet" href="${sheet.href}">`
+          // @ts-ignore: Unreachable code error
+        } else if (sheet.ownerNode && sheet.ownerNode.innerHTML) {
+          // Inline <style> block
+          // @ts-ignore: Unreachable code error
+          return `<style>${sheet.ownerNode.innerHTML}</style>`
+        }
+      } catch (e) {
+        // Some stylesheets (like from extensions) may throw CORS errors
+        return ""
+      }
+    })
+    .join("\n")
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>BiMi Sheet</title>
+        ${styles}
+        <style>
+          /* Print-specific overrides */
+          @page { margin: 20mm; }
+          body { font-family: sans-serif; margin: 0; padding: 0; }
+
+          /* Ensure backgrounds & colors are preserved */
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        </style>
+      </head>
+      <body>${content.innerHTML}</body>
+    </html>
+  `)
+  printWindow.document.close()
+  printWindow.focus()
+  printWindow.print()
+  printWindow.close()
+};
+
+function openSheetModel(): void {
+  try {
+    var newBiMiSheet = createJSONfromInput();
+    console.log(newBiMiSheet)
+    if (newBiMiSheet){
+      console.log("Moved in here!")
+      tempBiMiSheetModal.value = newBiMiSheet;
+      openedBiMiSheetModal.value = true;
+      console.log("Moved in here!", openedBiMiSheetModal)
+      console.log("bananana", tempBiMiSheetModal.value)
+    }
+    
+  } catch(error) {
+    console.error(error)
+  }  
+}
 </script>
 
 <style scoped>
+
+v-tooltip {
+  z-index: 99999 !important;
+}
 
 .max-width-set {
   max-width: 1000px;
@@ -263,6 +412,23 @@ function downloadJson(): void {
 .flex-break{
   flex: 1 0 100% !important
 }
-  
 
+.modal {
+  max-height: calc(100vh - 20px);
+  /* overflow-y: auto; */
+
+  min-width: 80%;
+}
+  
+.modal-content {
+  position: relative;
+
+  max-width: 800px;
+  width: 90%;
+  padding: spacing(4);
+  margin: 0 spacing(3);
+
+  background-color: white;
+
+}
 </style>
